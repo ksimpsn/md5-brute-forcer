@@ -12,7 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class HelloController {
+public class BruteForceController {
     @FXML
     private TextField md5HashInput;
 
@@ -28,7 +28,7 @@ public class HelloController {
     protected void onChooseFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open dictionary file");
-        dictionaryFile = fileChooser.showOpenDialog(null);
+        dictionaryFile = fileChooser.showOpenDialog(md5HashInput.getScene().getWindow());
         fileName.setText(dictionaryFile.getName());
     }
 
