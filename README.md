@@ -10,7 +10,7 @@ To build and run this application, you need:
 
 ## Building the Application
 1. Clone the repository: git clone https://github.com/ksimpsn/md5-brute-forcer.git
-2. Navigate to the project directory: cd MD5BruteForce
+2. Navigate to the project directory: cd md5-brute-forcer
 3. Compile the project using Maven: mvn clean compile
 
 ## Running the Application
