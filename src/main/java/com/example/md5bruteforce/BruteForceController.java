@@ -27,15 +27,15 @@ public class BruteForceController {
     @FXML
     protected void onChooseFile() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open dictionary file");
+        fileChooser.setTitle("Select a dictionary file:");
         dictionaryFile = fileChooser.showOpenDialog(md5HashInput.getScene().getWindow());
         fileName.setText(dictionaryFile.getName());
     }
 
     @FXML
-    public void onStartBruteForce(ActionEvent actionEvent) {
+    private void onStartBruteForce() {
         if (dictionaryFile == null || md5HashInput.getText().isEmpty()) {
-            resultText.setText("Pleae select a file and enter an MD5 hash.");
+            resultText.setText("Please select a file and enter an MD5 hash.");
         }
 
         try {
@@ -51,9 +51,7 @@ public class BruteForceController {
         }
     }
 
-    private String bruteForceMD5(String hash, File file) throws IOException,
-            NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
+    private String bruteForceMD5(String hash, File file) throws NoSuchAlgorithmException {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -61,11 +59,14 @@ public class BruteForceController {
                     return line;
                 }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "An exception was thrown";
         }
         return null;
     }
 
-    public String generateMD5Hash(String input) throws NoSuchAlgorithmException {
+    private String generateMD5Hash(String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(input.getBytes());
         byte[] digest = md.digest();

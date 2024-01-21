@@ -16,10 +16,10 @@
 
     <Label fx:id="fileName"/>
 
-    <Label text="Enter MD5 Hash:"/>
+    <Label text="Enter the MD5 Hash String to be cracked:"/>
     <TextField fx:id="md5HashInput"/>
 
-    <Button text="Start brute force algorithm" onAction="#onStartBruteForce"/>
+    <Button text="Crack!" onAction="#onStartBruteForce"/>
 
     <Label fx:id="resultText"/>
 </VBox>
